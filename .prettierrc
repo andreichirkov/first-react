@@ -1,0 +1,10 @@
+{
+  "semi": false,
+  "singleQuote": false,
+  "max_line_length": 120,
+  "bracketSameLine": true,
+  "arrowParens": "avoid",
+  "trailingComma" : "none",
+  "bracketSpacing": true,
+  "quoteProps": "as-needed"
+}
