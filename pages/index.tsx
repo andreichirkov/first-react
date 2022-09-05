@@ -1,8 +1,9 @@
 import {Button, Htag, P, Rating, Tag} from "../components"
+import {Layout} from "../layouts/Layout";
 
 export default function Home(): JSX.Element {
   return (
-    <>
+    <Layout>
       <Htag tag="h1">Текст</Htag>
       <Button appearance={"primary"} className={"klasss"} arrow={"right"}>
         раз кнопка
@@ -27,6 +28,6 @@ export default function Home(): JSX.Element {
       </Tag>
       <Rating rating={3} isEditable />
       <Rating rating={4} />
-    </>
+    </Layout>
   )
 }
