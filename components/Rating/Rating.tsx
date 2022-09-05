@@ -31,12 +31,30 @@ export const Rating = ({
       return (
         <StarIcon
           className={cn(styles.star, {
-            [styles.filled]: i < currentRating
+            [styles.filled]: i < currentRating,
+            [styles.editable]: isEditable
           })}
+          onMouseEnter={() => changeDisplay(i + 1)}
+          onMouseLeave={() => changeDisplay(rating)}
+          onClick={() => onClick(i + 1)}
         />
       )
     })
     setRatingArray(updatedArray)
+  }
+
+  const changeDisplay = (i: number) => {
+    if (!isEditable) {
+      return
+    }
+    constructRating(i)
+  }
+
+  const onClick = (i: number) => {
+    if (!isEditable || !setRating) {
+      return
+    }
+    setRating(i)
   }
 
   return (

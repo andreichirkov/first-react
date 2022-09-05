@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
       <Tag size={"m"} color={"green"}>
         мал гост
       </Tag>
-      <Rating rating={3} />
+      <Rating rating={3} isEditable />
       <Rating rating={4} />
     </>
   )
