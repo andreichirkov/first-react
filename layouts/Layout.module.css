@@ -2,15 +2,18 @@
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
+  gap: 0 30px;
   grid-template-columns: auto 230px minmax(320px, 1200px) auto;
   grid-template-areas:
-    '. header header .'
-    '. sidebar body .'
-    'footer footer footer footer';
+   ". header header ."
+   ". sidebar body ."
+   "footer footer footer footer"
+;
 }
 
 .header {
   grid-area: header;
+  background: lightcoral;
   display: none;
 }
 
@@ -24,6 +27,7 @@
 
 .footer {
   grid-area: footer;
+  background: red;
 }
 
 @media (max-width: 765px) {
