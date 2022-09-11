@@ -27,7 +27,6 @@
 
 .footer {
   grid-area: footer;
-  background: red;
 }
 
 @media (max-width: 765px) {
