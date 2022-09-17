@@ -1,20 +1,18 @@
-.footer {
+.firstLevel {
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 10px 40px;
-  color: var(--white);
-  font-size: 16px;
-  line-height: 20px;
-  background: var(--primary);
-  padding: 25px 30px;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+  line-height: 25px;
 }
 
-.footer a:hover {
-  color: var(--gray-light);
+.firstLevelActive,
+.firstLevel:hover {
+  color: var(--primary);
 }
 
-@media (max-width: 765px) {
-  .footer {
-    grid-template-columns: 1fr;
-  }
+.firstLevelActive svg,
+.firstLevel:hover svg {
+  fill: var(--primary);
 }
