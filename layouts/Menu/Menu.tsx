@@ -62,7 +62,7 @@ export const Menu = (): JSX.Element => {
 
   const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
     return (
-      <div>
+      <div className={styles.secondBlock}>
         {menu.map(m => (
           <div key={m._id.secondCategory}>
             <div className={styles.secondLevel}>{m._id.secondCategory}</div>
