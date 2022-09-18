@@ -16,3 +16,13 @@
 .firstLevel:hover svg {
   fill: var(--primary);
 }
+
+.secondLevel {
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 300;
+}
