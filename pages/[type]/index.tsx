@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
     }
   }
 
-  let { data: menu } = await axios.post<MenuItem[]>(
+  const { data: menu } = await axios.post<MenuItem[]>(
     process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
     {
       firstCategory: firstCategoryItem.id
@@ -42,12 +42,12 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
   )
 
   //Укоротил список меню до 2 | HARDCODE
-  menu = menu.map(item => {
-    return {
-      ...item,
-      pages: item.pages.slice(0,2)
-    }
-  })
+  // menu = menu.map(item => {
+  //   return {
+  //     ...item,
+  //     pages: item.pages.slice(0,2)
+  //   }
+  // })
 
   return {
     props: {

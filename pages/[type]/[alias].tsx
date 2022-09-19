@@ -2,40 +2,52 @@ import { withLayout } from "../../layouts/Layout"
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next"
 import axios from "axios"
 import { MenuItem } from "../../interfaces/menu.interface"
-import {TopLevelCategory, TopPageModel} from "../../interfaces/page.interface"
+import { TopLevelCategory, TopPageModel } from "../../interfaces/page.interface"
 import { ParsedUrlQuery } from "querystring"
 import { ProductModel } from "../../interfaces/product.interface"
-import {firstLevelMenu} from "../../helpers/helpers";
+import { firstLevelMenu } from "../../helpers/helpers"
+import { TopPageComponent } from "../../page-components"
 
 //Страница конкретного курса
 //Пример: рендерим длину продуктов (получаем ПРОПСАМИ ЭТИ продукты)
-function Course({ menu, page, products }: CourseProps): JSX.Element {
-  return <>{products && products.length}</>
+function TopPage({ firstCategory, page, products }: TopPageProps): JSX.Element {
+  return (
+    <TopPageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  )
 }
 
-export default withLayout(Course)
+export default withLayout(TopPage)
 
 //ПРЕгенерация путей страниц -> возвращаем paths по сути
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths: string[] = [];
+  let paths: string[] = []
   for (const m of firstLevelMenu) {
-    const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
-      firstCategory: m.id
-    });
-    paths = paths.concat(menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`)));
+    const { data: menu } = await axios.post<MenuItem[]>(
+      process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
+      {
+        firstCategory: m.id
+      }
+    )
+    paths = paths.concat(
+      menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`))
+    )
   }
 
   return {
     paths,
     fallback: true
-  };
-};
+  }
+}
 
 //Делаем пропсы (данные) для статической генерации
 //Тип возврата функции: Статические пропсы (т.е. Спец. тип GetStaticProps) интерфейса КурсПропс (Пр: <IPageProps>, в Дженерик передается тип пропсов)
 //Далее функция получает Доп. Параметры (некоторый Контекст типа GetStaticPropsContext)
 //Это ВСЁ возвращает ПРОПСЫ, которые автоматом передаются в страницу(тут это -> Course) ^^  (сходили на БЭК и получили данные)
-export const getStaticProps: GetStaticProps<CourseProps> = async ({
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   params
 }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
@@ -91,7 +103,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({
 }
 
 //ТИП возвращаемых ПРОПСОВ (для более строгой типизации)
-interface CourseProps extends Record<string, unknown> {
+interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[]
   firstCategory: TopLevelCategory
   page: TopPageModel
