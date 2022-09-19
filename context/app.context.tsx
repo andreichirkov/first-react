@@ -25,7 +25,7 @@ export const AppContextProvider = ({
   }
 
   return (
-    <AppContext.Provider value={{ menu: menuState, firstCategory }}>
+    <AppContext.Provider value={{ menu: menuState, firstCategory, setMenu }}>
       {children}
     </AppContext.Provider>
   )
