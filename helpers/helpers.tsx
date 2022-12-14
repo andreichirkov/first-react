@@ -1,9 +1,9 @@
-import {FirstLevelMenuItem} from "../interfaces/menu.interface";
-import CoursesIcon from "../layouts/Menu/icons/courses.svg";
-import {TopLevelCategory} from "../interfaces/page.interface";
-import ServicesIcon from "../layouts/Menu/icons/services.svg";
-import ProductsIcon from "../layouts/Menu/icons/products.svg";
-import BooksIcon from "../layouts/Menu/icons/books.svg";
+import { FirstLevelMenuItem } from "../interfaces/menu.interface"
+import CoursesIcon from "../layouts/Menu/icons/courses.svg"
+import { TopLevelCategory } from "../interfaces/page.interface"
+import ServicesIcon from "../layouts/Menu/icons/services.svg"
+import ProductsIcon from "../layouts/Menu/icons/products.svg"
+import BooksIcon from "../layouts/Menu/icons/books.svg"
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
   {
