@@ -5,9 +5,7 @@ import styles from "./Menu.module.css"
 import cn from "classnames"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import {firstLevelMenu} from "../../helpers/helpers";
-
-
+import { firstLevelMenu } from "../../helpers/helpers"
 
 export const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = useContext(AppContext)
@@ -83,6 +81,8 @@ export const Menu = (): JSX.Element => {
           className={cn(styles.thirdLevel, {
             [styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
           })}>
+          &#10148;
+          &nbsp;
           {p.category}
         </a>
       </Link>
