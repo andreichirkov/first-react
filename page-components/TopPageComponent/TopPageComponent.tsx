@@ -2,7 +2,7 @@ import { PProps } from "../../components/P/P.props"
 import cn from "classnames"
 import styles from "./TopPageComponent.module.css"
 import { TopPageComponentProps } from "./TopPageComponent.props"
-import { Card, HhData, Htag, Tag } from "../../components"
+import { Advantages, Card, HhData, Htag, P, Tag } from "../../components"
 import { TopLevelCategory } from "../../interfaces/page.interface"
 
 export const TopPageComponent = ({
@@ -30,7 +30,18 @@ export const TopPageComponent = ({
           hh.ru
         </Tag>
       </div>
-      {firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh} />}
+      {firstCategory == TopLevelCategory.Courses && page.hh && (
+        <HhData {...page.hh} />
+      )}
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Преимущества</Htag>
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
+      {page.seoText && <P>{page.seoText}</P>}
+      <Htag tag="h2">Получаемые навыки</Htag>
+      {page.tags.map(t => <Tag key={t} color='primary'>{t}</Tag>)}
     </div>
   )
 }
