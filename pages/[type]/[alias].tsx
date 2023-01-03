@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   }
 
   try {
-    const { data: menu } = await axios.post<MenuItem[]>(
+    let { data: menu } = await axios.post<MenuItem[]>(
       process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
       {
         firstCategory: firstCategoryItem.id
@@ -76,6 +76,8 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({
       }
     }
 
+    menu = menu.slice(0, 2)
+
     const { data: page } = await axios.get<TopPageModel>(
       process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/byAlias/" + params.alias
     )
@@ -86,6 +88,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({
         limit: 10
       }
     )
+
 
     return {
       props: {

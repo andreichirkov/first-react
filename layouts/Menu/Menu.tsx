@@ -81,8 +81,7 @@ export const Menu = (): JSX.Element => {
           className={cn(styles.thirdLevel, {
             [styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
           })}>
-          &#10148;
-          &nbsp;
+          &#10148; &nbsp;
           {p.category}
         </a>
       </Link>

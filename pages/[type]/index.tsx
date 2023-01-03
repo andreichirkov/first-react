@@ -6,7 +6,7 @@ import { firstLevelMenu } from "../../helpers/helpers"
 import { ParsedUrlQuery } from "querystring"
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
-  return <>Type - {firstCategory}</>
+  return <>Страница первой категории!!! Type - {firstCategory}</>
 }
 
 export default withLayout(Type)
@@ -34,20 +34,16 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
     }
   }
 
-  const { data: menu } = await axios.post<MenuItem[]>(
+  let { data: menu } = await axios.post<MenuItem[]>(
     process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
     {
       firstCategory: firstCategoryItem.id
     }
   )
 
+
   //Укоротил список меню до 2 | HARDCODE
-  // menu = menu.map(item => {
-  //   return {
-  //     ...item,
-  //     pages: item.pages.slice(0,2)
-  //   }
-  // })
+  menu = menu.slice(0, 2)
 
   return {
     props: {

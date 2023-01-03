@@ -40,7 +40,8 @@ export default withLayout(Home)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0
-  const { data: menu } = await axios.post<MenuItem[]>(
+
+  let { data: menu } = await axios.post<MenuItem[]>(
     process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find", {
       firstCategory
     }
@@ -48,12 +49,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
 
   //Укоротил список меню до 2 | HARDCODE
-  // menu = menu.map(item => {
-  //   return {
-  //     ...item,
-  //     pages: item.pages.slice(0,2)
-  //   }
-  // })
+  menu = menu.slice(0, 2)
 
   return {
     props: {

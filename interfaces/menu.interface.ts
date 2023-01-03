@@ -1,5 +1,5 @@
 //Категории с подКатегориями -> Главное меню
-import {TopLevelCategory} from "./page.interface";
+import { TopLevelCategory } from "./page.interface"
 
 export interface PageItem {
   _id: string
@@ -16,7 +16,6 @@ export interface MenuItem {
   isOpened?: boolean
   pages: PageItem[]
 }
-
 
 export interface FirstLevelMenuItem {
   route: string
