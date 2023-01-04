@@ -1,5 +1,5 @@
-import { Button, Htag, Input, P, Rating, Tag } from "../components"
 import { withLayout } from "../layouts/Layout"
+import { Button, Htag, Input, P, Rating, Tag, Textarea } from "../components"
 import { GetStaticProps } from "next"
 import axios from "axios"
 import { MenuItem } from "../interfaces/menu.interface"
@@ -32,6 +32,7 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Rating rating={3} isEditable />
       <Rating rating={4} />
       <Input placeholder='Имя' />
+      <Textarea placeholder='Текст отзыва' />
     </>
   )
 }
