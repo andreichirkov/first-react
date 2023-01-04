@@ -1,4 +1,4 @@
-import { Button, Htag, P, Rating, Tag } from "../components"
+import { Button, Htag, Input, P, Rating, Tag } from "../components"
 import { withLayout } from "../layouts/Layout"
 import { GetStaticProps } from "next"
 import axios from "axios"
@@ -31,7 +31,7 @@ function Home({ menu }: HomeProps): JSX.Element {
       </Tag>
       <Rating rating={3} isEditable />
       <Rating rating={4} />
-
+      <Input placeholder='Имя' />
     </>
   )
 }

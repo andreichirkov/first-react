@@ -11,13 +11,16 @@ export const TopPageComponent = ({
   products,
   firstCategory
 }: TopPageComponentProps): JSX.Element => {
-  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, {
-    products,
-    sort: SortEnum.Rating
-  })
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      products,
+      sort: SortEnum.Rating
+    }
+  )
 
   const setSort = (sort: SortEnum) => {
-    dispatchSort({ type: sort})
+    dispatchSort({ type: sort })
   }
 
   return (
@@ -32,7 +35,8 @@ export const TopPageComponent = ({
         <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {sortedProducts && sortedProducts.map(p => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts &&
+          sortedProducts.map(p => <div key={p._id}>{p.title}</div>)}
       </div>
       <div className={styles.hhTitle}>
         <Htag tag="h2">Вакансии - {page.category}</Htag>

@@ -12,7 +12,6 @@ export const Sort = ({
   ...props
 }: SortProps): JSX.Element => {
   return (
-
     <div className={cn(styles.sort, className)} {...props}>
       <span
         onClick={() => setSort(SortEnum.Rating)}
