@@ -1,18 +1,25 @@
-.p {
-  margin: 0;
+.product {
+  display: grid;
+  grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
 }
 
-.s {
-  font-size: 14px;
-  line-height: 24px;
+.logo {
+  grid-column: start / logoend;
+  grid-row: 1 / span 2;
 }
 
-.m {
-  font-size: 16px;
-  line-height: 24px;
+.title, .tags {
+  grid-column: titlestart / middle;
 }
 
-.l {
-  font-size: 18px;
-  line-height: 29px;
+.price, .priceTitle {
+  grid-column: pricestart / priceend;
+}
+
+.credit, .creditTitle {
+  grid-column: creditstart / creditend;
+}
+
+.rating, .rateTitle {
+  grid-column: ratingstart / end;
 }
