@@ -54,6 +54,10 @@
   align-self: flex-end;
 }
 
+.category {
+  margin-top: 7px;
+}
+
 .credit {
   display: flex;
 }
@@ -74,6 +78,12 @@
   align-self: flex-end;
 }
 
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
 .month {
   font-size: 14px;
   line-height: 19px;
@@ -88,4 +98,27 @@
   line-height: 19px;
 }
 
+.reviewButton {
+  margin-left: 20px;
+}
 
+.advBlock {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.advTitle {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.advantages {
+  border-left: 2px solid var(--green);
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.disadvantages {
+  border-left: 2px solid var(--red);
+  padding-left: 15px;
+}

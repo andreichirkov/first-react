@@ -22,10 +22,13 @@ export const Product = ({
         />
       </div>
       <div className={styles.title}>{product.title}</div>
-      <div className={styles.price}>{priceRu(product.price)}
-        {product.oldPrice && <Tag className={styles.oldPrice} color='green'>
-          {priceRu(product.price - product.oldPrice)}
-        </Tag>}
+      <div className={styles.price}>
+        {priceRu(product.price)}
+        {product.oldPrice && (
+          <Tag className={styles.oldPrice} color="green">
+            {priceRu(product.price - product.oldPrice)}
+          </Tag>
+        )}
       </div>
 
       <div className={styles.credit}>
@@ -36,7 +39,7 @@ export const Product = ({
       </div>
       <div className={styles.tags}>
         {product.categories.map(c => (
-          <Tag color={"ghost"} key={c}>
+          <Tag className={styles.category} color={"ghost"} key={c}>
             {c}
           </Tag>
         ))}
@@ -50,19 +53,26 @@ export const Product = ({
       <div className={styles.feature}>feature</div>
 
       <div className={styles.advBlock}>
-        <div className={styles.advantages}>
-          <div>Преимущества</div>
-          <div>{product.advantages}</div>
-        </div>
-        <div className={styles.disadvantages}>
-          <div>Недостатки</div>
-          <div>{product.disadvantages}</div>
-        </div>
+        {product.advantages && (
+          <div className={styles.advantages}>
+            <div className={styles.advTitle}>Преимущества</div>
+            <div>{product.advantages}</div>
+          </div>
+        )}
+        {product.disadvantages && (
+          <div className={styles.disadvantages}>
+            <div className={styles.advTitle}>Недостатки</div>
+            <div>{product.disadvantages}</div>
+          </div>
+        )}
       </div>
       <Divider className={styles.hr} />
       <div className={styles.actions}>
         <Button appearance="primary">Узнать подробнее</Button>
-        <Button appearance="ghost" arrow="right">
+        <Button
+          className={styles.reviewButton}
+          appearance="ghost"
+          arrow="right">
           Читать отзывы
         </Button>
       </div>
