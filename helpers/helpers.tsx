@@ -32,6 +32,7 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
   }
 ]
 
+//Регулярка разделяет цену: три цифры отделяет пробелом
 export const priceRu = (price: number): string =>
   price
     .toString()
