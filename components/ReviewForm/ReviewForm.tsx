@@ -101,11 +101,17 @@ export const ReviewForm = ({
           </span>
         </div>
       </div>
-      <div className={styles.success}>
-        <div className={styles.successTitle}>Ваш отзыв отправлен</div>
-        <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
-        <CloseIcon className={styles.close} />
-      </div>
+      {isSuccess && (
+        <div className={cn(styles.success, styles.panel)}>
+          <div className={styles.successTitle}>Ваш отзыв отправлен</div>
+          <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
+          <CloseIcon className={styles.close} onClick={() => setIsSuccess(false)} />
+        </div>
+      )}
+      {error && <div className={cn(styles.error, styles.panel)}>
+        Что то пошло не так, попробуйте обновить страницу
+        <CloseIcon className={styles.close} onClick={() => setError(undefined)} />
+      </div>}
     </form>
   )
 }
