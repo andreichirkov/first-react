@@ -12,7 +12,14 @@ import styles from "./Rating.module.css"
 
 export const Rating = forwardRef(
   (
-    { isEditable = false, rating, setRating, className, ...props }: RatingProps,
+    {
+      isEditable = false,
+      error,
+      rating,
+      setRating,
+      className,
+      ...props
+    }: RatingProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element => {
     //По-умолчанию заполняем рейтинг пустым массивом 5 элементов
@@ -75,10 +82,16 @@ export const Rating = forwardRef(
     }
 
     return (
-      <div {...props} ref={ref}>
+      <div
+        {...props}
+        ref={ref}
+        className={cn(styles.ratingWrapper, {
+          [styles.error]: error
+        })}>
         {ratingArray.map((r, i) => (
           <span key={i}>{r}</span>
         ))}
+        {error && <span className={styles.errorMessage}>{error.message}</span>}
       </div>
     )
   }
