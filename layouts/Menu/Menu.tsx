@@ -28,7 +28,7 @@ export const Menu = (): JSX.Element => {
   const variantsChildren = {
     visible: {
      opacity: 1,
-      height: 'auto'
+      height: 29
     },
     hidden: {
       opacity: 0,
