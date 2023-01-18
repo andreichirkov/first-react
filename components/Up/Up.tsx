@@ -12,7 +12,7 @@ export const Up = (): JSX.Element => {
   useEffect(() => {
     //Находясь в самом вверху будет opacity = 0, а внизу = 1 (хитро)
     //А переходы между состояниями будут анимированны
-    controls.start({ opacity: y / document.body.scrollHeight })
+    controls.start({ opacity: y / document.body.scrollHeight }).then()
   }, [y, controls])
 
   const scrollToTop = () => {
