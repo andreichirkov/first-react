@@ -12,8 +12,6 @@
 
 .header {
   grid-area: header;
-  background: lightcoral;
-  display: none;
 }
 
 .sidebar {
@@ -41,11 +39,9 @@
     display: none !important;
   }
 
-  .header {
-    display: block;
-  }
-
   .body {
     padding: 0 15px;
   }
 }
+
+

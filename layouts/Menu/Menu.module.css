@@ -48,8 +48,8 @@
   font-size: 14px;
   line-height: 19px;
 }
+
 .thirdLevel:hover,
 .thirdLevelActive {
   color: var(--primary);
-
 }
