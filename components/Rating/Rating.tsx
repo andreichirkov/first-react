@@ -4,7 +4,7 @@ import {
   useState,
   KeyboardEvent,
   forwardRef,
-  ForwardedRef
+  ForwardedRef, useRef
 } from "react"
 import StarIcon from "./star.svg"
 import cn from "classnames"
@@ -27,6 +27,7 @@ export const Rating = forwardRef(
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
       new Array(5).fill(<></>)
     )
+    const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([])
 
     //Подписываемся на рейтинг (ПРОПС)
     //При его изменении выполняем useEffect
@@ -34,6 +35,22 @@ export const Rating = forwardRef(
       //Возвращаем разметку с рейтингом на основе ПРОПСОВ
       constructRating(rating)
     }, [rating])
+
+    const computeFocus = (r: number, i: number): number => {
+      if (!isEditable) {
+        return -1
+      }
+
+      if (!rating && i == 0) {
+        return 0
+      }
+
+      if (r == i + 1) {
+        return 0
+      }
+
+      return -1
+    }
 
     //Здесь привязываемся не к пропсу рейтинга, тк при ховере он визуально тоже меняется
     const constructRating = (currentRating: number) => {
@@ -45,15 +62,13 @@ export const Rating = forwardRef(
               [styles.filled]: i < currentRating,
               [styles.editable]: isEditable
             })}
+            ref={r => ratingArrayRef.current?.push(r)}
+            tabIndex={computeFocus(rating, i)}
+            onKeyDown={handleKey}
             onMouseEnter={() => changeDisplay(i + 1)}
             onMouseLeave={() => changeDisplay(rating)}
             onClick={() => onClick(i + 1)}>
-            <StarIcon
-              tabIndex={isEditable ? 0 : -1}
-              onKeyDown={(e: KeyboardEvent<SVGAElement>) =>
-                isEditable && handleSpace(i + 1, e)
-              }
-            />
+            <StarIcon   />
           </span>
         )
       })
@@ -74,11 +89,30 @@ export const Rating = forwardRef(
       setRating(i)
     }
 
-    const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
-      if (e.code != "Space" || !setRating) {
+    const handleKey = (e: KeyboardEvent) => {
+      if (!isEditable || !setRating) {
         return
       }
-      setRating(i)
+
+      if (e.code == "ArrowRight" || e.code == "ArrowUp") {
+        if (!rating) {
+          setRating(1)
+        } else {
+          e.preventDefault()
+          setRating(rating < 5 ? rating + 1 : 5)
+        }
+        ratingArrayRef.current[rating]?.focus()
+      }
+
+      if (e.code == "ArrowLeft" || e.code == "ArrowDown") {
+        if (!rating) {
+          setRating(1)
+        } else {
+          e.preventDefault()
+          setRating(rating > 1 ? rating - 1 : 1)
+          ratingArrayRef.current[rating - 2]?.focus()
+        }
+      }
     }
 
     return (
