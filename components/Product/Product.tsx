@@ -128,14 +128,18 @@ export const Product = motion(
             animate={isReviewOpened ? "visible" : "hidden"}
             variants={variants}
             initial={"hidden"}>
-            <Card ref={reviewRef} color="blue" className={styles.reviews} tabIndex={0}>
+            <Card
+              ref={reviewRef}
+              color="blue"
+              className={styles.reviews}
+              tabIndex={isReviewOpened ? 0 : -1}>
               {product.reviews.map(r => (
                 <div key={r._id}>
                   <Review review={r} />
                   <Divider />
                 </div>
               ))}
-              <ReviewForm productId={product._id} />
+              <ReviewForm productId={product._id} isOpened={isReviewOpened} />
             </Card>
           </motion.div>
         </div>

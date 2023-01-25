@@ -17,7 +17,7 @@ export const Rating = forwardRef(
       error,
       rating,
       setRating,
-      className,
+      tabIndex,
       ...props
     }: RatingProps,
     ref: ForwardedRef<HTMLDivElement>
@@ -34,7 +34,7 @@ export const Rating = forwardRef(
     useEffect(() => {
       //Возвращаем разметку с рейтингом на основе ПРОПСОВ
       constructRating(rating)
-    }, [rating])
+    }, [rating, tabIndex])
 
     const computeFocus = (r: number, i: number): number => {
       if (!isEditable) {
@@ -42,11 +42,11 @@ export const Rating = forwardRef(
       }
 
       if (!rating && i == 0) {
-        return 0
+        return tabIndex ?? 0
       }
 
       if (r == i + 1) {
-        return 0
+        return tabIndex ?? 0
       }
 
       return -1
