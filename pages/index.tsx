@@ -5,7 +5,7 @@ import axios from "axios"
 import { MenuItem } from "../interfaces/menu.interface"
 import { API } from "../helpers/api"
 
-function Home({ menu }: HomeProps): JSX.Element {
+function Home(): JSX.Element {
   return (
     <>
       <Htag tag="h1">Текст</Htag>
